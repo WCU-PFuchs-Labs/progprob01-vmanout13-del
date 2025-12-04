@@ -16,12 +16,14 @@ output: head-->1-->2-->3-->null
 Please complete the following program to fullfil the function.
 */
 import java.util.Scanner;
+
 public class homework20_1
 {
    public static void main(String[] args)
    {
       Scanner sc = new Scanner(System.in);
-      LinkedList llist = new LinkedList();
+
+      LinkedList llist = new LinkedList();  // uses the custom LinkedList below
 
       for (int i = 0; i < 5; i++) {
          int x = sc.nextInt();
@@ -35,31 +37,29 @@ public class homework20_1
             cur.next = new ListNode(x);
          }
       }
+
       deleteDuplicates(llist);
+
       System.out.println(llist.toString());
 
       sc.close();
-   
    }
+
    public static void deleteDuplicates(LinkedList llist)
    {
-     
-   if (llist.head == null || llist.head.next == null) {
+      if (llist.head == null || llist.head.next == null) {
          return;
       }
 
       ListNode cur = llist.head;
-
-      // loop while there is a next node
       while (cur != null && cur.next != null) {
          if (cur.value == cur.next.value) {
-            // skip the duplicate node
             cur.next = cur.next.next;
          } else {
-            // move to next distinct node
             cur = cur.next;
+         }
+      }
    }
-
 }
 
 class ListNode
